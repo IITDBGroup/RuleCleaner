@@ -1014,8 +1014,12 @@ def dc_main(dc_input):
                 deleted_ids.extend(r_deleted)
             deleted_unique_ids=set(deleted_ids)
             incorrect_deleted_cnt=len([x for x in deleted_unique_ids if x not in real_dirty_ids])
+            logger.critical(r)
+            logger.critical(incorrect_deleted_cnt/dataset_size)
+            logger.critical('\n')
             if(1-incorrect_deleted_cnt/dataset_size>pre_filter_thresh):
                 filtered_rules.append(r)
+    exit()
     logger.critical('TIME: done filtering out rules')
 
     prefilter_end = time.time()
